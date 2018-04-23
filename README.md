@@ -22,3 +22,6 @@
         </tr>
     </tbody>
 </table>
+
+# Documentation
+Read the [wiki](https://github.com/Com-Ericmas001/Rpi/wiki) for more info
