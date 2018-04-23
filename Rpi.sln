@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ericmas001.Rpi.Gpio", "Com.Ericmas001.Rpi.Gpio\Com.Ericmas001.Rpi.Gpio.csproj", "{0293F43C-9E39-41EC-81F8-D45E18F25021}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{321ABA09-84D7-4E49-990F-A14967F96520}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.travis.yml = .travis.yml
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
