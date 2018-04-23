@@ -3,7 +3,7 @@ using Com.Ericmas001.Rpi.Gpio.Enums;
 
 namespace Com.Ericmas001.Rpi.Gpio
 {
-    internal class Led : IOnOffListener
+    public class Led : IOnOffListener
     {
         public IGpioPin Pin { get; }
         public Led(IGpioController controller, GpioEnum gpio)

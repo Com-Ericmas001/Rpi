@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Com.Ericmas001.Rpi.Gpio</Description>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Company>Ericmas001</Company>
     <Authors>Ericmas001</Authors>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Com-Ericmas001/Rpi/master/LICENSE</PackageLicenseUrl>

@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/Com-Ericmas001/Rpi.svg?branch=master)](https://travis-ci.org/Com-Ericmas001/Rpi)
 [![com-ericmas001 MyGet Build Status](https://www.myget.org/BuildSource/Badge/com-ericmas001?identifier=74cca358-c93c-4d3b-805a-840a1be41294)](https://www.myget.org/)
 
-###Current Version: 0.1.0 *(2018-04-22)*
+###Current Version: 0.1.1 *(2018-04-22)*
 <table align="center" width="100%">
     <tbody>
         <tr>

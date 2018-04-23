@@ -7,7 +7,7 @@ using Com.Ericmas001.Rpi.Gpio.Enums;
 
 namespace Com.Ericmas001.Rpi.Gpio
 {
-    internal class Button
+    public class Button
     {
         public string Name { get; }
         public IGpioPin ButtonPin { get; }

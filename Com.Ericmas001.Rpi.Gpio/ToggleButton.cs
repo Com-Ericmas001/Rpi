@@ -4,7 +4,7 @@ using Com.Ericmas001.Rpi.Gpio.Enums;
 
 namespace Com.Ericmas001.Rpi.Gpio
 {
-    internal class ToggleButton : Button
+    public class ToggleButton : Button
     {
         public ToggleButton(IGpioController controller, GpioEnum gpio, string name) : base(controller, gpio, name)
         {
