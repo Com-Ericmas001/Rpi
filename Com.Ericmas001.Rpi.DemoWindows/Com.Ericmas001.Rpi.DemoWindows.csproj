@@ -140,6 +140,9 @@
     <PackageReference Include="Com.Ericmas001.Logs">
       <Version>0.1.2</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.IoT.Devices">
+      <Version>1.0.8</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.8</Version>
     </PackageReference>
