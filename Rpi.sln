@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ericmas001.Rpi.Gpio", "Com.Ericmas001.Rpi.Gpio\Com.Ericmas001.Rpi.Gpio.csproj", "{0293F43C-9E39-41EC-81F8-D45E18F25021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Ericmas001.Rpi.Gpio", "Com.Ericmas001.Rpi.Gpio\Com.Ericmas001.Rpi.Gpio.csproj", "{0293F43C-9E39-41EC-81F8-D45E18F25021}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{321ABA09-84D7-4E49-990F-A14967F96520}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ericmas001.Rpi.DemoWindows", "Com.Ericmas001.Rpi.DemoWindows\Com.Ericmas001.Rpi.DemoWindows.csproj", "{2110F585-C8A2-4623-88DC-083103E76903}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ericmas001.Rpi.Gpio.Windows", "Com.Ericmas001.Rpi.Gpio.Windows\Com.Ericmas001.Rpi.Gpio.Windows.csproj", "{3F2DF009-B53D-4FB7-B844-CD04FF54A941}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,22 @@ Global
 		{2110F585-C8A2-4623-88DC-083103E76903}.Release|x86.ActiveCfg = Release|x86
 		{2110F585-C8A2-4623-88DC-083103E76903}.Release|x86.Build.0 = Release|x86
 		{2110F585-C8A2-4623-88DC-083103E76903}.Release|x86.Deploy.0 = Release|x86
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Debug|ARM.ActiveCfg = Debug|ARM
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Debug|ARM.Build.0 = Debug|ARM
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Debug|x64.ActiveCfg = Debug|x64
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Debug|x64.Build.0 = Debug|x64
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Debug|x86.ActiveCfg = Debug|x86
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Debug|x86.Build.0 = Debug|x86
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Release|ARM.ActiveCfg = Release|ARM
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Release|ARM.Build.0 = Release|ARM
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Release|x64.ActiveCfg = Release|x64
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Release|x64.Build.0 = Release|x64
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Release|x86.ActiveCfg = Release|x86
+		{3F2DF009-B53D-4FB7-B844-CD04FF54A941}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

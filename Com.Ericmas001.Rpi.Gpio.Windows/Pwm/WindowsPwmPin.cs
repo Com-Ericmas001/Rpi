@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Devices.Pwm;
+﻿using Windows.Devices.Pwm;
 using Com.Ericmas001.Rpi.Gpio.Abstractions;
 
-namespace Com.Ericmas001.Rpi.DemoWindows.Implementations
+namespace Com.Ericmas001.Rpi.Gpio.Windows
 {
-    internal class MyPwmPin : IPwmPin
+    public class WindowsPwmPin : IPwmPin
     {
         private readonly PwmPin m_PwmPin;
 
-        public MyPwmPin(PwmPin pwmPin)
+        public WindowsPwmPin(PwmPin pwmPin)
         {
             m_PwmPin = pwmPin;
         }

@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.Devices.Gpio;
-using Windows.Devices.Pwm;
 using Com.Ericmas001.DependencyInjection.Unity;
 using Com.Ericmas001.Logs;
 using Com.Ericmas001.Logs.Enums;
 using Com.Ericmas001.Logs.Services.Interfaces;
-using Com.Ericmas001.Rpi.DemoWindows.Implementations;
 using Com.Ericmas001.Rpi.Gpio;
 using Com.Ericmas001.Rpi.Gpio.Abstractions;
 using Com.Ericmas001.Rpi.Gpio.Enums;
+using Com.Ericmas001.Rpi.Gpio.Windows;
+using Com.Ericmas001.Rpi.Gpio.Windows.Pwm;
 using Unity;
 
 // The Background Application template is documented at http://go.microsoft.com/fwlink/?LinkID=533884&clcid=0x409
@@ -27,24 +26,19 @@ namespace Com.Ericmas001.Rpi.DemoWindows
 
             var logger = container.Resolve<ILoggerService>();
             var controller = InitGPIO(logger);
+            var pwmManager = new WindowsPwmProvider(controller);
+            var dimPwmController = await pwmManager.GetDimmablePwmControllerProviderAsync();
 
             Task red = new Button(controller, GpioEnum.Gpio12, logger){Name = "RED"}.AttachListener((IOnPressListener)new ToggleLed(controller, GpioEnum.Gpio05, true)).RunAsync();
             Task blue = new ToggleButton(controller, GpioEnum.Gpio16, logger) { Name = "BLUE" }.AttachListener(new Led(controller, GpioEnum.Gpio06, true)).RunAsync();
-
-            var pwmManager = new MyPwmProvider(controller);
-            var pwmController = (await PwmController.GetControllersAsync(pwmManager)).First();
-            pwmController.SetDesiredFrequency(240);
-            var myPwmController = new MyPwmController(pwmController);
-
-            var greenDimLed = new DimmableLed(myPwmController,GpioEnum.Gpio21,10);
-
-            Task green = HaveFunWithLedAsync(greenDimLed);
+            Task green = FadeInFadeOutAsync(dimPwmController, GpioEnum.Gpio21);
 
             Task.WaitAll(red, blue, green);
         }
 
-        private async Task HaveFunWithLedAsync(DimmableLed led)
+        private async Task FadeInFadeOutAsync(IPwmController controller, GpioEnum gpio)
         {
+            var led = new DimmableLed(controller, gpio, 10);
             while (true)
             {
                 for (int i = 10; i <= 90; i += 4)
@@ -72,7 +66,7 @@ namespace Com.Ericmas001.Rpi.DemoWindows
             }
 
             logger.Log(LogLevelEnum.Information, "GPIO initialized correctly.");
-            return new MyGpioController(gpio);
+            return new WindowsGpioController(gpio);
         }
     }
 }

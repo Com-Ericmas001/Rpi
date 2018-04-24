@@ -2,19 +2,19 @@
 using Com.Ericmas001.Rpi.Gpio.Abstractions;
 using Com.Ericmas001.Rpi.Gpio.Enums;
 
-namespace Com.Ericmas001.Rpi.DemoWindows.Implementations
+namespace Com.Ericmas001.Rpi.Gpio.Windows
 {
-    internal class MyGpioController : IGpioController
+    public class WindowsGpioController : IGpioController
     {
         private readonly GpioController m_Controller;
 
-        public MyGpioController(GpioController controller)
+        public WindowsGpioController(GpioController controller)
         {
             m_Controller = controller;
         }
         public IGpioPin OpenPin(GpioEnum gpio)
         {
-            return new MyGpioPin(m_Controller.OpenPin(gpio.ToGpioNumber()));
+            return new WindowsGpioPin(m_Controller.OpenPin(gpio.ToGpioNumber()));
         }
 
         public int PinCount => m_Controller.PinCount;

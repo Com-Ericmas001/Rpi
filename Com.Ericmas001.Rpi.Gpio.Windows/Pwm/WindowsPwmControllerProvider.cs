@@ -4,20 +4,15 @@ using Com.Ericmas001.Rpi.Gpio.Abstractions;
 using Com.Ericmas001.Rpi.Gpio.Enums;
 using Com.Ericmas001.Rpi.Gpio.Pwm;
 
-namespace Com.Ericmas001.Rpi.DemoWindows.Implementations
+namespace Com.Ericmas001.Rpi.Gpio.Windows.Pwm
 {
-    class MyPwmProvider : IPwmProvider, IPwmControllerProvider
+    public class WindowsPwmControllerProvider : IPwmControllerProvider
     {
         private readonly SoftwarePwmController m_SoftwarePwmController;
 
-        public MyPwmProvider(IGpioController controller)
+        public WindowsPwmControllerProvider(IGpioController controller)
         {
             m_SoftwarePwmController = new SoftwarePwmController(controller);
-        }
-
-        public IReadOnlyList<IPwmControllerProvider> GetControllers()
-        {
-            return new[] {this};
         }
 
         public double SetDesiredFrequency(double frequency)

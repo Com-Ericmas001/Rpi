@@ -3,13 +3,13 @@ using Windows.Devices.Gpio;
 using Com.Ericmas001.Rpi.Gpio.Abstractions;
 using Com.Ericmas001.Rpi.Gpio.Enums;
 
-namespace Com.Ericmas001.Rpi.DemoWindows.Implementations
+namespace Com.Ericmas001.Rpi.Gpio.Windows
 {
-    internal class MyGpioPin : IGpioPin
+    public class WindowsGpioPin : IGpioPin
     {
         private readonly GpioPin m_Pin;
 
-        public MyGpioPin(GpioPin pin)
+        public WindowsGpioPin(GpioPin pin)
         {
             m_Pin = pin;
         }

@@ -95,11 +95,6 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Implementations\MyGpioPin.cs" />
-    <Compile Include="Implementations\MyGpioController.cs" />
-    <Compile Include="Implementations\MyPwmController.cs" />
-    <Compile Include="Implementations\MyPwmPin.cs" />
-    <Compile Include="Implementations\MyPwmProvider.cs" />
     <Compile Include="StartupTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -148,6 +143,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Com.Ericmas001.Rpi.Gpio.Windows\Com.Ericmas001.Rpi.Gpio.Windows.csproj">
+      <Project>{3f2df009-b53d-4fb7-b844-cd04ff54a941}</Project>
+      <Name>Com.Ericmas001.Rpi.Gpio.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Com.Ericmas001.Rpi.Gpio\Com.Ericmas001.Rpi.Gpio.csproj">
       <Project>{0293f43c-9e39-41ec-81f8-d45e18f25021}</Project>
       <Name>Com.Ericmas001.Rpi.Gpio</Name>
