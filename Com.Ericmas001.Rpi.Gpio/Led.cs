@@ -6,10 +6,10 @@ namespace Com.Ericmas001.Rpi.Gpio
     public class Led : IOnOffListener
     {
         public IGpioPin Pin { get; }
-        public Led(IGpioController controller, GpioEnum gpio)
+        public Led(IGpioController controller, GpioEnum gpio, bool initialValue = false)
         {
             Pin = controller.OpenPin(gpio);
-            Pin.Write(GpioPinValueEnum.High);
+            Pin.Write(initialValue ? GpioPinValueEnum.Low : GpioPinValueEnum.High);
             Pin.SetDriveMode(GpioPinDriveModeEnum.Output);
         }
 

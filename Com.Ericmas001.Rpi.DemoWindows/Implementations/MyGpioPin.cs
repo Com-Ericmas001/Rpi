@@ -5,7 +5,7 @@ using Com.Ericmas001.Rpi.Gpio.Enums;
 
 namespace Com.Ericmas001.Rpi.DemoWindows.Implementations
 {
-    class MyGpioPin : IGpioPin
+    internal class MyGpioPin : IGpioPin
     {
         private readonly GpioPin m_Pin;
 
@@ -61,6 +61,11 @@ namespace Com.Ericmas001.Rpi.DemoWindows.Implementations
                 default:
                     throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(GpioPinDriveModeEnum));
             }
+        }
+
+        public void Dispose()
+        {
+            m_Pin.Dispose();
         }
     }
 }

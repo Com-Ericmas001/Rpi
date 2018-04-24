@@ -9,7 +9,7 @@ namespace Com.Ericmas001.Rpi.Gpio
 {
     public class Button
     {
-        public string Name { get; }
+        public string Name { get; set; } = "Button";
         public IGpioPin ButtonPin { get; }
 
         public bool IsOn { get; protected set; }
@@ -17,9 +17,8 @@ namespace Com.Ericmas001.Rpi.Gpio
         protected event EventHandler TurnedOn;
         protected event EventHandler TurnedOff;
 
-        public Button(IGpioController controller, GpioEnum gpio, string name, ILoggerService loggerService = null)
+        public Button(IGpioController controller, GpioEnum gpio, ILoggerService loggerService = null)
         {
-            Name = name;
             ButtonPin = controller.OpenPin(gpio);
             ButtonPin.SetDriveMode(GpioPinDriveModeEnum.InputPullUp);
             if (loggerService != null)

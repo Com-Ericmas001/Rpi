@@ -6,8 +6,9 @@ namespace Com.Ericmas001.Rpi.Gpio
     public class ToggleLed : Led, IOnPressListener
     {
         public bool IsOn { get; protected set; }
-        public ToggleLed(IGpioController controller, GpioEnum gpio) : base(controller, gpio)
+        public ToggleLed(IGpioController controller, GpioEnum gpio, bool initialValue = false) : base(controller, gpio, initialValue)
         {
+            IsOn = initialValue;
         }
 
         public void Do(object activator = null)

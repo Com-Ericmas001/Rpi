@@ -4,7 +4,7 @@ using Com.Ericmas001.Rpi.Gpio.Enums;
 
 namespace Com.Ericmas001.Rpi.DemoWindows.Implementations
 {
-    class MyGpioController : IGpioController
+    internal class MyGpioController : IGpioController
     {
         private readonly GpioController m_Controller;
 
@@ -16,5 +16,7 @@ namespace Com.Ericmas001.Rpi.DemoWindows.Implementations
         {
             return new MyGpioPin(m_Controller.OpenPin(gpio.ToGpioNumber()));
         }
+
+        public int PinCount => m_Controller.PinCount;
     }
 }

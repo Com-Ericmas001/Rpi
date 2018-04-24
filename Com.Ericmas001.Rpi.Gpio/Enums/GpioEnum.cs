@@ -1,4 +1,6 @@
-﻿namespace Com.Ericmas001.Rpi.Gpio.Enums
+﻿using System;
+
+namespace Com.Ericmas001.Rpi.Gpio.Enums
 {
     public enum GpioEnum
     {
@@ -42,8 +44,17 @@
         Gpio26 = 37,
     }
 
-    public static class GpioEnumExtensions
+    public static class GpioEnumUtil
     {
+        public static GpioEnum FromPinNumber(int n)
+        {
+            return (GpioEnum)n;
+        }
+        public static GpioEnum FromGpioNumber(int n)
+        {
+            return (GpioEnum)Enum.Parse(typeof(GpioEnum), $"Gpio{n:00}");
+        }
+
         public static int ToPinNumber(this GpioEnum e)
         {
             return (int)e;

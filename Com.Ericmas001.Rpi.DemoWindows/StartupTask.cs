@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.Devices.Gpio;
@@ -11,8 +12,6 @@ using Com.Ericmas001.Rpi.DemoWindows.Implementations;
 using Com.Ericmas001.Rpi.Gpio;
 using Com.Ericmas001.Rpi.Gpio.Abstractions;
 using Com.Ericmas001.Rpi.Gpio.Enums;
-using Microsoft.IoT.DeviceCore.Pwm;
-using Microsoft.IoT.Devices.Pwm;
 using Unity;
 
 // The Background Application template is documented at http://go.microsoft.com/fwlink/?LinkID=533884&clcid=0x409
@@ -29,38 +28,35 @@ namespace Com.Ericmas001.Rpi.DemoWindows
             var logger = container.Resolve<ILoggerService>();
             var controller = InitGPIO(logger);
 
-            Task red = new Button(controller, GpioEnum.Gpio12, "RED", logger).AttachListener((IOnPressListener)new ToggleLed(controller, GpioEnum.Gpio05)).RunAsync();
-            Task blue = new ToggleButton(controller, GpioEnum.Gpio16, "BLUE", logger).AttachListener(new Led(controller, GpioEnum.Gpio06)).RunAsync();
+            Task red = new Button(controller, GpioEnum.Gpio12, logger){Name = "RED"}.AttachListener((IOnPressListener)new ToggleLed(controller, GpioEnum.Gpio05, true)).RunAsync();
+            Task blue = new ToggleButton(controller, GpioEnum.Gpio16, logger) { Name = "BLUE" }.AttachListener(new Led(controller, GpioEnum.Gpio06, true)).RunAsync();
 
-            var pwmManager = new PwmProviderManager();
-            pwmManager.Providers.Add(new SoftPwm());
-            var pwmControllers = await pwmManager.GetControllersAsync();
-            //use the first available PWM controller an set refresh rate (Hz)
-            var _pwmController = pwmControllers[0];
-            _pwmController.SetDesiredFrequency(240);
+            var pwmManager = new MyPwmProvider(controller);
+            var pwmController = (await PwmController.GetControllersAsync(pwmManager)).First();
+            pwmController.SetDesiredFrequency(240);
+            var myPwmController = new MyPwmController(pwmController);
 
-            var _redLed = _pwmController.OpenPin(21);
-            _redLed.Start();
+            var greenDimLed = new DimmableLed(myPwmController,GpioEnum.Gpio21,10);
 
-            Task green = HaveFunWithLedAsync(_redLed);
+            Task green = HaveFunWithLedAsync(greenDimLed);
 
             Task.WaitAll(red, blue, green);
         }
 
-        private async Task HaveFunWithLedAsync(PwmPin pin)
+        private async Task HaveFunWithLedAsync(DimmableLed led)
         {
             while (true)
             {
-                await Task.Delay(2000);
-                pin.SetActiveDutyCyclePercentage(0.20);
-                await Task.Delay(2000);
-                pin.SetActiveDutyCyclePercentage(0.80);
-                await Task.Delay(2000);
-                pin.SetActiveDutyCyclePercentage(0.50);
-                await Task.Delay(2000);
-                pin.SetActiveDutyCyclePercentage(0);
-                await Task.Delay(2000);
-                pin.SetActiveDutyCyclePercentage(1);
+                for (int i = 10; i <= 90; i += 4)
+                {
+                    led.Dim(i, this);
+                    await Task.Delay(10);
+                }
+                for (int i = 90; i >= 10; i -= 4)
+                {
+                    led.Dim(i, this);
+                    await Task.Delay(50);
+                }
             }
         }
 

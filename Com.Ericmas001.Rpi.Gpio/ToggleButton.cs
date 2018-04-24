@@ -7,7 +7,7 @@ namespace Com.Ericmas001.Rpi.Gpio
 {
     public class ToggleButton : Button
     {
-        public ToggleButton(IGpioController controller, GpioEnum gpio, string name, ILoggerService loggerService = null) : base(controller, gpio, name, loggerService)
+        public ToggleButton(IGpioController controller, GpioEnum gpio, ILoggerService loggerService = null) : base(controller, gpio, loggerService)
         {
         }
 
